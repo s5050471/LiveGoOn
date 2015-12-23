@@ -1,18 +1,25 @@
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
+import com.github.sarxos.webcam.WebcamResolution;
+
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.ToolBar;
-import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import swing2swt.layout.BoxLayout;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.TrayItem;
-import org.eclipse.swt.custom.CLabel;
-import org.eclipse.swt.widgets.ProgressBar;
+import org.eclipse.swt.widgets.Composite;
+import java.awt.Frame;
+import org.eclipse.swt.awt.SWT_AWT;
+import java.awt.Panel;
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JRootPane;
 
 public class First_Page {
 
@@ -102,6 +109,27 @@ public class First_Page {
 		Button btnNewButton_2 = new Button(shlLiveGoon, SWT.NONE);
 		btnNewButton_2.setBounds(43, 141, 75, 25);
 		btnNewButton_2.setText("Media File");
+		
+		Webcam webcam = Webcam.getDefault();
+		webcam.setViewSize(WebcamResolution.VGA.getSize());
+
+		WebcamPanel cam = new WebcamPanel(webcam);
+		cam.setFPSDisplayed(true);
+
+		Composite composite = new Composite(shlLiveGoon, SWT.EMBEDDED);
+		composite.setBounds(184, 10, 590, 521);
+		
+		Frame frame = SWT_AWT.new_Frame(composite);
+		
+		Panel panel = new Panel();
+		frame.add(panel);
+		panel.setLayout(new BorderLayout(0, 0));
+		
+		frame.add(cam);
+		frame.pack();
+		frame.setVisible(true);
+		
+		
 
 	}
 }
