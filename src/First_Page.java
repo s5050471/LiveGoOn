@@ -1,4 +1,5 @@
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 
 import com.github.sarxos.webcam.Webcam;
@@ -11,19 +12,16 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import java.awt.Frame;
 import org.eclipse.swt.awt.SWT_AWT;
-import java.awt.Panel;
-import java.awt.BorderLayout;
-
-import javax.swing.JFrame;
-import javax.swing.JRootPane;
 
 public class First_Page {
 
 	protected Shell shlLiveGoon;
+	
 
 	/**
 	 * Launch the application.
@@ -46,6 +44,14 @@ public class First_Page {
 		createContents();
 		shlLiveGoon.open();
 		shlLiveGoon.layout();
+		shlLiveGoon.addListener(SWT.Close, new Listener() {
+			  @Override
+		      public void handleEvent(Event event) {
+				  System.out.println("Exit");
+				  System.exit(0);
+		      }
+		});
+		afterLoad();
 		while (!shlLiveGoon.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
@@ -57,6 +63,8 @@ public class First_Page {
 	 * Create contents of the window.
 	 */
 	protected void createContents() {
+		
+		
 		shlLiveGoon = new Shell();
 		shlLiveGoon.setSize(800, 600);
 		shlLiveGoon.setText("LIVE GoOn");
@@ -109,27 +117,26 @@ public class First_Page {
 		Button btnNewButton_2 = new Button(shlLiveGoon, SWT.NONE);
 		btnNewButton_2.setBounds(43, 141, 75, 25);
 		btnNewButton_2.setText("Media File");
-		
+
+	}
+	protected void afterLoad(){
 		Webcam webcam = Webcam.getDefault();
 		webcam.setViewSize(WebcamResolution.VGA.getSize());
+		webcam.open();
 
 		WebcamPanel cam = new WebcamPanel(webcam);
+		cam.setBounds(0, 0, 590, 523);
 		cam.setFPSDisplayed(true);
+		cam.setMirrored(true);
 
 		Composite composite = new Composite(shlLiveGoon, SWT.EMBEDDED);
 		composite.setBounds(184, 10, 590, 521);
 		
 		Frame frame = SWT_AWT.new_Frame(composite);
-		
-		Panel panel = new Panel();
-		frame.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
+		frame.setLayout(null);
 		
 		frame.add(cam);
 		frame.pack();
 		frame.setVisible(true);
-		
-		
-
 	}
 }

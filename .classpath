@@ -4,8 +4,9 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="var" path="SWT_LIB"/>
 	<classpathentry kind="lib" path="swing2swt.jar"/>
-	<classpathentry kind="lib" path="C:/Users/KOKOKRUNCH/Downloads/webcam-capture-0.3.10-dist/webcam-capture-0.3.10.jar"/>
-	<classpathentry kind="lib" path="C:/Users/KOKOKRUNCH/Downloads/webcam-capture-0.3.10-dist/libs/bridj-0.6.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/KOKOKRUNCH/Downloads/webcam-capture-0.3.10-dist/libs/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/KOKOKRUNCH/workspace/LiveGoOn/src/lib/bridj-0.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/KOKOKRUNCH/workspace/LiveGoOn/src/lib/webcam-capture-0.3.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/KOKOKRUNCH/workspace/LiveGoOn/src/lib/slf4j-nop-1.7.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/KOKOKRUNCH/workspace/LiveGoOn/src/lib/slf4j-api-1.7.13.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
